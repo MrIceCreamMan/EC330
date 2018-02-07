@@ -1,0 +1,48 @@
+Zhuohao Yang, U01579972
+The output is the following:
+
+bash-4.1$ g++ problem4.cpp -o a
+bash-4.1$ ./a
+=======================================================================
+Problem 4A:
+    There are 26739138 "words" that contain only letters
+-----------------------------------------------------------------------
+Problem 4B:
+    The shortest pangram is:
+    "trCypBrDmegQNsSlkzJ6xfoUHAQiV w" with length = 31
+-----------------------------------------------------------------------
+Problem 4C:
+    There are 7278354 dictionary words without "Z" or "z" in the file.
+=======================================================================
+
+
+4A: about 20 seconds
+Runtime: theta(N), N is the total characters in the "BigData.txt" file.
+Approach:
+I read in the "BigData.txt" word by word.
+Then I checked if there are non-letter characters in the words.
+Then I count the total words with only letters in it.
+
+
+4B: about 4 minutes
+Runtime: theta(N), N is the total characters in the "BigData.txt" file.
+Approach:
+I read in the "BigData.txt" character by character in a string.
+At some point the string will become a pangram, and I will record the string and its length.
+Then I will try to delete this string from the beginning character by character until its not a pangram.
+Then I check if the current string length is smaller than the one I got before.
+I repeat this process until I finish reading the "BigData.txt" file.
+
+
+4C: about 1 minute
+Runtime:
+big O(m x n) to build the trie, m is the maximum length of individual words in the dictionary.
+				n is the total words in the dictionary.
+big O(m x k) to search for dictionary words, m is the maximum length of individual words in the dictionary.
+					     k is the total words in the "BigData.txt" file.
+Approach:
+I first wrote a "Node" class and build it into a trie. 
+Then I input the "dictionary.txt" file into my trie.
+Then, I read in the "BigData.txt" file word by word.
+After than, I deleted all the words with "Z" and "z".
+Finally, I used my trie to check the "BigData.txt" file and got the result.
